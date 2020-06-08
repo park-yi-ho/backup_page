@@ -1,0 +1,224 @@
+// Define variable
+$breakpoint-mobile: 335px;
+$breakpoint-tablet: 758px;
+$breakpoint-desktop: 1024px;
+
+// Define @Mixins
+@mixin mobile {
+    @media (min-width: #{$breakpoint-mobile}) and (max-width: #{$breakpoint-tablet - 1px}) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media (min-width: #{$breakpoint-desktop}) {
+      @content;
+    }
+  }
+
+@mixin position($x,$y,$z) {
+    position: absolute;
+    top: $x;
+    left: $y;
+    z-index: $z;
+    @if  $x == 50% and $y == 50% {
+        transform: translate(-50%,-50%);
+    }
+    @else if $x == 50%{
+        transform: translateY(-50%);
+    }
+    @else if $y == 50%{
+        transform: translateX(-50%);
+    }
+}
+
+@mixin backgroundImg($path,$x:0,$y:0,$w:0,$h:0){
+    background: {
+        image: url($path);
+        position: $x $y;
+        size: $w $h;
+    }
+    background-repeat: no-repeat;
+}
+
+@mixin box-sizing($w:auto,$h:auto,$m:0,$p:0){
+    width: $w;
+    height: $h;
+    margin: $m;
+    padding: $p;
+}
+
+@mixin setFont($size:14px,$weight:none,$lineHeight:auto,$align:none,$color:black){
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $lineHeight;
+    text-align: $align;
+    color: $color;
+}
+
+// imports
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+// font-family: 'Noto Sans KR', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+//font-family: 'Oswald', sans-serif;
+
+// Define default elements
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+#airs-header
+{
+    @include box-sizing(100%, 50px);
+    background: rgba($color: #000000, $alpha: 0.8);
+    h1.airs-logo{
+        height: 100%;
+        margin-left: 25px;
+        color: white;
+        font-size: 22pt;
+        font-family: 'Oswald', sans-serif;
+        line-height: 50px;
+    }
+
+}
+#airs-content
+{   
+    @include box-sizing(100%, 1000px);
+    position: relative;
+    div.airs-main-content
+    {   
+        @include box-sizing(1200px, 100%);
+        @include position(50%,50%,0);
+        section.airs-head-line-section
+        {   
+            @include box-sizing(100%, 80px);
+            padding-top: 15px;
+            padding-left: 30px;
+            padding-right: 30px;
+            background: rgb(245, 243, 243);
+            box-shadow: 0 1.5px 8px 5px rgba($color: gray, $alpha: 0.4);
+            box-sizing: border-box;
+            span.airs-head-line
+            {
+                width: 450px;
+                font-size: 25pt;
+                font-weight: 700;
+                font-family: 'Noto Sans KR', sans-serif;
+            }
+            div.airs-head-btn-box
+            {
+                @include box-sizing(200px, 65px);
+                float: right;
+                button
+                {
+                    @include box-sizing(48px, 48px);
+                    border: 0;
+                    outline: 0;
+                    &:first-child
+                    {
+                        margin-right: 25px;
+                    }
+                }
+                button.airs-back-btn
+                {
+                    background: url("https://img.icons8.com/flat_round/64/000000/arrow-left.png") 0 0/ 48px 48px no-repeat;
+                }
+                button.airs-forward-btn
+                {
+                    background: url("https://img.icons8.com/flat_round/64/000000/arrow-right.png") 0 0/ 48px 48px no-repeat;
+                }
+            }
+        }
+        section.airs-backup-table-section
+        {
+            @include box-sizing(100%, 905px);
+            background: rgb(245, 243, 243);
+            box-shadow: 0 1.5px 8px 5px rgba($color: gray, $alpha: 0.4);
+            box-sizing: border-box;
+            margin-top: 15px;
+            table.airs-table
+            {
+                @include box-sizing(100%,auto);
+                border-collapse: collapse;
+                thead.airs-table-thead
+                {
+                    
+                    tr.airs-table-row
+                    {
+                        @include box-sizing(100%, 50px);
+                        background: rgb(109, 107, 107);
+                        color: white;
+                        th
+                        {
+                            font-family: 'Noto Sans KR', sans-serif;
+                            border-left: 1.2px solid white;
+                            &:first-child
+                            {
+                                border: none;
+                            }   
+                        }
+                    }
+                }
+                tbody.airs-table-tbody
+                {   
+                   
+                    tr.airs-table-col
+                    {
+                        &:first-child,
+                        &:nth-child(2n+1){
+                            background: rgb(214, 212, 212);
+                        }
+                        &:nth-child(2n){
+                            background: rgb(169, 169, 170);
+                        }
+                        @include box-sizing(100%, 60px);
+                        td
+                        {
+                            font-family: 'Noto Sans KR', sans-serif;
+                            font-size: 20pt;
+                            font-weight: 700;
+                            border-left: 1.2px solid white;
+                            text-align: center;
+                            color: rgb(56, 55, 55);
+                            &:first-child
+                            {
+                                width: 40%;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+            div.airs-non-data-table-box{
+                @include box-sizing(100%);
+                height:calc(100% - 50px);
+                padding-left: 300px;
+                box-sizing: border-box;
+                div.airs-non-data-table-aria{
+                    @include box-sizing(600px, 100%);
+                    position: relative;
+                    img{
+                        @include position(20%, 50%, 1);
+                    }
+                    h1{
+                        @include position(60%, 10%, 1);
+                        font-size: 25pt;
+                        font-family: 'Noto Sans KR', sans-serif;
+                        font-weight: bold;
+                        color: rgb(90, 90, 90);
+                    }
+                }
+            }
+        }
+    }
+}
