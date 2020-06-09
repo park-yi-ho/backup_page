@@ -84,17 +84,17 @@ const Table = ({ res, curMonth, curYear }: TableProps) => {
             for (let i = 0; i < arr.length; i++) {
                 arr2.push(arr[i].split(splitRegExp1));
             }
-        console.log(curMonth);
+
         console.log(arr2);
-        console.log("-----------------------------------------------");
+        
         for(let i = 0; i<arr2.length;i++){
             if(typeof arr2[i][1] == "string"){
                 if(arr2[i][1].search(searchRegExp1) !== -1){
-                    console.log("1: "+arr2[i][1].search(searchRegExp1));
+                    
                     arr3.push([arr2[i][0],arr2[i][1].split(",")]);
                 }
                 else if(arr2[i][1].search(searchRegExp2) !== -1){
-                    console.log("2: "+arr2[i][1].search(searchRegExp2));
+        
                     arr3.push([arr2[i][0],arr2[i][1].split(".")]);
                 }
                 else{
@@ -103,7 +103,7 @@ const Table = ({ res, curMonth, curYear }: TableProps) => {
             }
         }
         console.log(arr3);
-        console.log("-----------------------------------------------");
+        
         for(let i = 0;i<arr3.length;i++){
             if(typeof arr3[i][1] == "string"){
                 arr4.push([arr3[i][0],arr3[i][1]]);
@@ -116,10 +116,9 @@ const Table = ({ res, curMonth, curYear }: TableProps) => {
             }
         }
         console.log(arr4);
-        console.log("-----------------------------------------------");
+       
             for (let i = 0; i < arr4.length; i++) {
                 const date = new Date(convertDate(arr4[i][0]));
-                console.log(date.getFullYear(),curYear);
                 if((((curMonth-1) === (date.getMonth()+1) &&  20 < date.getDate() ) ||  ( curMonth === (date.getMonth()+1) && 20 >= date.getDate())) && date.getFullYear() === curYear){
                     person.push({
                         name: arr4[i][1],
@@ -173,7 +172,7 @@ const Table = ({ res, curMonth, curYear }: TableProps) => {
             }
 
         }
-        console.log("--------------------------------------------");
+        
         console.log(newArr);
 
         // const data = res.data.replace('   ' , '').replace('\t', '');
