@@ -3,14 +3,22 @@ import Header from '../Header/Header';
 import Table from '../Table/Table';
 import axios from 'axios';
 
-const getRes = async (dispatch: React.Dispatch<React.SetStateAction<any>>) => {
-  const data = await axios('http://10.0.2.5:7070');
+interface Res {
+  data: string;
+}
+
+const defaultRes = {
+  data: ''
+}
+
+const getRes = async (dispatch: React.Dispatch<React.SetStateAction<Res>>) => {
+  const data = await axios('http://10.0.11.1:7070/');
   dispatch(data);
 }
 
 function App() {
   const date = new Date();
-  const [res, setRes] = useState();
+  const [res, setRes] = useState<Res>(defaultRes);
   const [year, setYear] = useState(date.getFullYear());
   const [month, setMonth] = useState(date.getMonth() + 1);
 
@@ -47,7 +55,7 @@ function App() {
             </div>
           </section>
           <section className="airs-backup-table-section">
-            <Table res={res} curMonth={month}/>
+            <Table res={res} curMonth={month} curYear={year}/>
           </section>
         </div>
       </main>
