@@ -11,6 +11,7 @@ const defaultRes = {
   data: ''
 }
 
+
 const getRes = async (dispatch: React.Dispatch<React.SetStateAction<Res>>) => {
   const data = await axios('http://10.0.11.1:7070/');
   dispatch(data);
