@@ -13,7 +13,7 @@ const defaultRes = {
 
 
 const getRes = async (dispatch: React.Dispatch<React.SetStateAction<Res>>) => {
-  const data = await axios('http://10.0.11.1:7070/');
+  const data = await axios('http://10.0.11.1:7078/');
   dispatch(data);
 }
 
@@ -27,6 +27,26 @@ function App() {
     getRes(setRes);
   }, []);
 
+  const monthMinus = () => {
+    if ((month - 1) >= 1 && (month - 1) <= 12) {
+      setMonth(month - 1);
+    }
+    else {
+      setYear(year - 1);
+      setMonth(12);
+    }
+  }
+
+  const monthPlus = () => {
+    if ((month + 1) >= 1 && (month + 1) <= 12) {
+      setMonth(month + 1);
+    }
+    else {
+      setYear(year + 1);
+      setMonth(1);
+    }
+  }
+
   return (
     <Fragment>
       <Header titleProps='Airs BackUp' />
@@ -35,31 +55,16 @@ function App() {
           <section className="airs-head-line-section">
             <span className="airs-head-line">{year}년 {month}월 백업 기록표</span>
             <div className="airs-head-btn-box">
-              <button onClick={function () {
-                if ((month - 1) >= 1 && (month - 1) <= 12) {
-                  setMonth(month - 1);
-                }
-                else {
-                  setYear(year - 1);
-                  setMonth(12);
-                }
-              }} className="airs-back-btn"></button>
-              <button onClick={function () {
-                if ((month + 1) >= 1 && (month + 1) <= 12) {
-                  setMonth(month + 1);
-                }
-                else {
-                  setYear(year + 1);
-                  setMonth(1);
-                }
-              }} className="airs-forward-btn"></button>
+              <button onClick={() => monthMinus()} className="airs-back-btn"></button>
+              <button onClick={() => monthPlus()} className="airs-forward-btn"></button>
             </div>
           </section>
           <section className="airs-backup-table-section">
-            <Table res={res} curMonth={month} curYear={year}/>
+            <Table res={res} curMonth={month} curYear={year} monthPlus={monthPlus} monthMinus={monthMinus} />
           </section>
         </div>
       </main>
+      
     </Fragment>
   );
 }

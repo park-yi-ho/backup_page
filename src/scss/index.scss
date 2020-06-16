@@ -174,7 +174,27 @@ $breakpoint-desktop: 1200px;
                             }
                             .airs-row2
                             {
-                                
+                                position: relative;
+                                .airs-calendar-btn{
+                                    @include box-sizing(150px , 40px);
+                                    position: absolute;
+                                    right: 2vw;
+                                    top: 5px;
+                                    border-radius: 15px;
+                                    outline: none;
+                                    border: 2px solid white;
+                                    color: white;
+                                    font-family: 'Noto Sans KR', sans-serif;
+                                    font-size: 15pt;
+                                    font-weight: 700;
+                                    background-color: rgb(77, 175, 214);
+                                    &:hover{
+                                        border: 4px solid rgb(77, 175, 214);
+                                        color: rgb(77, 175, 214);
+                                        background-color: white;
+                                    }
+                                }     
+
                             }
                             .airs-row3
                             {
@@ -241,6 +261,95 @@ $breakpoint-desktop: 1200px;
                             font-weight: bold;
                             color: rgb(90, 90, 90);
                         }
+                    }
+                }
+            }
+        }
+    }
+    #airs-popup-back{
+        display: none;
+        position: absolute;
+        top:0;
+        z-index: 2;
+        @include box-sizing(100%, 100%);
+        .airs-popup-box{
+            @include box-sizing(1100px, 800px);
+            background: rgb(217, 215, 247);
+            border-radius: 25px;
+            box-shadow: 0 1.5px 8px 5px rgba($color: gray, $alpha: 0.4);
+            box-sizing: border-box;
+            @include position(50%, 50%, 3);
+            table{
+                text-align: center;
+                width: 100%;
+                .airs-cal-table-tr1{
+                    th{
+                        font-size: 23pt;
+                        font-family: 'Noto Sans KR', sans-serif;
+                        font-weight: 700;
+                        text-align: center;
+                        position: relative;
+                        b{
+                            margin-bottom: 10px;
+                        }
+                        .airs-cal-back,
+                        .airs-cal-forward{
+                            position: absolute;
+                            top: 1px;
+                            @include box-sizing( 45px,45px);
+                            color: #e070d7;
+                            text-shadow: -2px 0 #F2F1F6, 0 2px #F2F1F6, 2px 0 #F2F1F6, 0 -2px #F2F1F6;
+                            &:hover{
+                                color: #f712e7;
+                                text-shadow: -1px 0 #e070d7, 0 1px #e070d7, 1px 0 #e070d7, 0 -1px #e070d7;
+                            }
+                        }
+                        .airs-cal-back{
+                            left:15vw;
+                        }
+                        .airs-cal-forward{
+                            right:15vw;
+                        }
+                        .airs-cal-exit-btn{
+                            position: absolute;
+                            top: 2px;
+                            right:2vw;
+                            @include box-sizing(40px, 40px);
+                            background: url("https://lh3.googleusercontent.com/proxy/zKRrPw2ThMf1HwHoCaZ3O-lkExTRR92QNmHrAGNWJUyXMqrj_GnSgyEIYhPMy1uLtpo9mHmlzg4JMGASFgPQPp1E248lfy1a5pZzexSBjhEC9THRYMc")  0 0/ 40px 40px no-repeat;
+                        }
+                    }
+                    
+                }
+                .airs-cal-table-tr2{
+                    th{
+                        font-size: 15pt;
+                        font-family: 'Noto Sans KR', sans-serif;
+                        font-weight: 500;
+                        text-align: center;
+                        width: 14.285%;
+                        height:60px;
+                        background-color: #e2b2de;
+                        border-radius:7px;
+                    }
+                    .sat{
+                        color: blue;
+                    }
+                    .sun{
+                        color: red;
+                    }
+                }
+                .airs-cal-table-tr3{
+                    text-align: center;
+                    td{
+                        background-color: white;
+                        border-radius: 7px;
+                        @include box-sizing(14.285%,100px)
+                    }
+                    .sat{
+                        color: blue;
+                    }
+                    .sun{
+                        color: red;
                     }
                 }
             }
@@ -338,6 +447,7 @@ $breakpoint-desktop: 1200px;
                                 {
                                     border: none;
                                 }   
+                                
                             }
                             .airs-row1
                             {
@@ -418,7 +528,9 @@ $breakpoint-desktop: 1200px;
             }
         }
     }
-
+    #airs-popup-back, .airs-calendar-btn{
+        display: none !important;
+    }
 
 }
 
@@ -592,5 +704,8 @@ $breakpoint-desktop: 1200px;
                 }
             }
         }
+    }
+    #airs-popup-back,.airs-calendar-btn{
+        display: none !important;
     }
 }
