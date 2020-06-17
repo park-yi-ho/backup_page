@@ -91,7 +91,7 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
     console.log(startDay);
 	var totalDate = getTotalDate(curYear,curMonth); 
     var previousDate = getTotalDate(curYear,curMonth-1);
-    let remain_day = 1;
+    // let remain_day = 1;
     let cnt = 0;
     let array2 = [];
     const calendarArr = [];
@@ -119,7 +119,7 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
             console.log(z);
             
             calendarArr.push("");
-            remain_day++;
+            // remain_day++;
         }
         
     }
@@ -329,16 +329,16 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                         <table cellSpacing="2" cellPadding="0">
                             <thead>
                                 <tr className="airs-cal-table-tr1">
-                                    <th colSpan={7}><div className="airs-cal-back" onClick={monthMinus}>◀</div><b>{curYear+ " 년 " + curMonth + " 월"}</b><div className="airs-cal-forward" onClick={monthPlus}>▶</div><div className="airs-cal-exit-btn"></div></th> 
+                                    <th colSpan={7}><div className="airs-cal-back" onClick={monthMinus}>◀</div><b className="airs-cal-year">{curYear}</b> <b className="airs-cal-month">{curMonth}</b><div className="airs-cal-forward" onClick={monthPlus}>▶</div><div className="airs-cal-exit-btn"></div></th> 
                                 </tr>
                                 <tr className="airs-cal-table-tr2">
-                                    <th className="sun">일</th>
-                                    <th className="mon">월</th>
-                                    <th className="tue">화</th>
-                                    <th className="wed">수</th>
-                                    <th className="thu">목</th>
-                                    <th className="fri">금</th>
-                                    <th className="sat">토</th>
+                                    <th className="sun">SUN</th>
+                                    <th className="mon">MON</th>
+                                    <th className="tue">TUE</th>
+                                    <th className="wed">WED</th>
+                                    <th className="thu">THU</th>
+                                    <th className="fri">FRI</th>
+                                    <th className="sat">SAT</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -357,6 +357,9 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                                 
                             </tbody>
                         </table>
+                        <div className="airs-cal-logo-box">
+                            <div className="airs-cal-logo"></div>
+                        </div>
                     </div>
                 </div>
             </Fragment>
@@ -387,16 +390,16 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                         <table cellSpacing="2" cellPadding="0">
                             <thead>
                                 <tr className="airs-cal-table-tr1">
-                                    <th colSpan={7}><div className="airs-cal-back" onClick={monthMinus}>◀</div><b>{curYear+ " 년 " + curMonth + " 월"}</b><div className="airs-cal-forward" onClick={monthPlus}>▶</div><div className="airs-cal-exit-btn"></div></th> 
+                                    <th colSpan={7}><div className="airs-cal-back" onClick={monthMinus}>◀</div><b className="airs-cal-year">{curYear}</b> <b className="airs-cal-month">{curMonth}</b><div className="airs-cal-forward" onClick={monthPlus}>▶</div><div className="airs-cal-exit-btn"></div></th> 
                                 </tr>
                                 <tr className="airs-cal-table-tr2">
-                                    <th className="sun">일</th>
-                                    <th className="mon">월</th>
-                                    <th className="tue">화</th>
-                                    <th className="wed">수</th>
-                                    <th className="thu">목</th>
-                                    <th className="fri">금</th>
-                                    <th className="sat">토</th>
+                                <th className="sun">SUN</th>
+                                    <th className="mon">MON</th>
+                                    <th className="tue">TUE</th>
+                                    <th className="wed">WED</th>
+                                    <th className="thu">THU</th>
+                                    <th className="fri">FRI</th>
+                                    <th className="sat">SAT</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -415,6 +418,9 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                                 
                             </tbody>
                         </table>
+                        <div className="airs-cal-logo-box">
+                            <div className="airs-cal-logo"></div>
+                        </div>
                     </div>
                 </div> <div className="airs-non-data-table-box">
             <div className="airs-non-data-table-aria">
