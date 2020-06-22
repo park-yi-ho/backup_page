@@ -324,6 +324,7 @@ $breakpoint-desktop: 1200px;
                         }
                         .airs-cal-back,
                         .airs-cal-forward{
+                            cursor: pointer;
                             position: absolute;
                             top: 50%;
                             transform: translateY(-50%);
@@ -337,6 +338,7 @@ $breakpoint-desktop: 1200px;
                         }
                         .airs-cal-back{
                             left:15vw;
+
                         }
                         .airs-cal-forward{
                             right:15vw;

@@ -157,7 +157,6 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
     if (1) {
         console.log(res);
         console.log(arr);
-        
         if(arr !== null){
             for (let i = 0; i < arr.length; i++) {
                 arr2.push(arr[i].split(splitRegExp1));
@@ -239,11 +238,18 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                     name:  arr4[i][1],
                     date: (date.getMonth()+1)+"/"+date.getDate(),
                     year: date.getFullYear(),
-                    month: [date.getMonth() + 1]
+                    month: [date.getMonth() + 1],
+                    fulldate : date.getFullYear()+","+(date.getMonth()+1) +"," +date.getDate()
                 });
 
             }
         }
+        person.sort(function date_ascending(a, b) {
+        var dateA = new Date(a.fulldate).getTime();
+        var dateB = new Date(b.fulldate).getTime();
+        return dateA > dateB ? 1 : -1;
+        });
+
         console.log(person);
         for (let x = 0; x < person.length; x++) {
 
