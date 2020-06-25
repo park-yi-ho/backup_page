@@ -13,7 +13,7 @@ const defaultRes = {
 
 
 const getRes = async (dispatch: React.Dispatch<React.SetStateAction<Res>>) => {
-  const data = await axios('http://10.0.11.1:7078/');
+  const data = await axios('http://10.0.11.1:7070/');
   dispatch(data);
 }
 

@@ -38,9 +38,9 @@ const Col = ({ ColClass, ColProps }: tableColProps) => {
     const { index, name, date, cnt } = ColProps;
     return (
         <tr className="airs-table-col">
-            <td key={(index).toString()} className={"airs-name-" + index.toString()}>{name}</td>
-            <td key={(index + 1).toString()} className={"airs-date-" + index.toString()}>{date}</td>
-            <td key={(index + 2).toString()} className={"airs-idx-" + index.toString()}>{cnt}</td>
+            <td key={(ColClass).toString()+"1"} className={"airs-name-" + index.toString()}>{name}</td>
+            <td key={(ColClass).toString()+"2"} className={"airs-date-" + index.toString()}>{date}</td>
+            <td key={(ColClass).toString()+"3"} className={"airs-idx-" + index.toString()}>{cnt}</td>
         </tr>
     );
 }
@@ -162,6 +162,14 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                 arr2.push(arr[i].split(splitRegExp1));
             }
 
+            console.log(arr2.slice());
+         
+            for(let k = 0; k<arr2.length;k++){
+                if(typeof arr2[k][1] == "string" && arr2[k][1].search(/philips/) !== -1){
+                    arr2.splice(k, 1);
+                }
+            }
+                        
         console.log(arr2);
         
         for(let i = 0; i<arr2.length;i++){
@@ -213,21 +221,31 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                 }
             }
             if(typeof calendarArr[i] === "number" && cnt === 0){
-                calendarPeople.push({date: calendarArr[i], name: ""});
+                calendarPeople.push({date: calendarArr[i], name: " "});
             }
             else if(calendarArr[i] === ""){
-                calendarPeople.push({date: "", name: ""});
+                calendarPeople.push({date: " ", name: " "});
             }
         }
+
         console.log(calendarPeople);
+        
+        
         for(let k = 0; k < (calendarPeople.length/7); k++){
             let array = [];
-            for(let n = 0; n<7 ;n++){
-                array.push({name:calendarPeople[count].name, date: calendarPeople[count].date}); 
-                count++;
-                }
-                calendarPeopleArr.push(array);
+            if(calendarPeople.length > 0){
+                for(let n = 0; n<7 ;n++){
+                        if(calendarPeople[count]){
+                            array.push({ name:calendarPeople[count].name, date: calendarPeople[count].date}); 
+                            count++;
+                        }
+                    
+                    }
+                    calendarPeopleArr.push(array);
+            }
         }
+
+        
         console.log(calendarPeopleArr);
        
         for (let i = 0; i < arr4.length; i++) {
@@ -308,6 +326,7 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
         // console.log(list);
 
     }
+
     if(newArr.length > 0){
         return (
             <Fragment>
@@ -326,7 +345,7 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                     </thead>
                     <tbody className="airs-table-tbody">
                         {
-                            newArr.map(row => (<Col ColClass={row.index} ColProps={row} />))
+                            newArr.map(row => (<Col key={row.index} ColClass={row.index} ColProps={row} />))
                         }
                     </tbody>
                 </table>
@@ -350,7 +369,7 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                             <tbody>
                                 
                                     {
-                                        calendarPeopleArr.map(col=>(<tr className="airs-cal-table-tr3">
+                                        calendarPeopleArr.map((col,num=1)=>(<tr key={num+1} className="airs-cal-table-tr3">
                                             <td className="sun"><h2>{col[0].date}</h2><span>{col[0].name}</span></td>
                                             <td className="mon"><h2>{col[1].date}</h2><span>{col[1].name}</span></td>
                                             <td className="tue"><h2>{col[2].date}</h2><span>{col[2].name}</span></td>
@@ -390,8 +409,8 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                 <tbody className="airs-table-tbody">
                 </tbody>
             </table>
-           
-          <div id="airs-popup-back">
+            
+            <div id="airs-popup-back">
                     <div className="airs-popup-box">
                         <table cellSpacing="2" cellPadding="0">
                             <thead>
@@ -430,11 +449,11 @@ const Table = ({ res, curMonth, curYear ,monthMinus ,monthPlus}: TableProps) => 
                     </div>
                 </div> <div className="airs-non-data-table-box">
             <div className="airs-non-data-table-aria">
-              <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/data-512.png" width="300"alt="bee"/>
-              <h1>이번 달은 백업데이터가 없습니다 :(</h1>  
+                <img src="https://cdn3.iconfinder.com/data/icons/linecons-free-vector-icons-pack/32/data-512.png" width="300"alt="bee"/>
+                <h1>이번 달은 백업데이터가 없습니다 :(</h1>  
             </div>  
-          </div>
-          </Fragment>
+            </div>
+            </Fragment>
         );  
     }
 }
